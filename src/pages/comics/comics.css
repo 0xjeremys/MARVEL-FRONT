@@ -1,0 +1,37 @@
+.mg-10 {
+  margin: 10px;
+}
+
+.comics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1200px;
+}
+
+.flex-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.comics-container {
+  width: 250px;
+  margin: 2px;
+  margin-bottom: 50px;
+}
+.comics-container-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: aquamarine;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 100%;
+}
+.comics-image {
+  width: 100%;
+  object-fit: cover;
+}
+.comics-title-container {
+  width: 100%;
+}
