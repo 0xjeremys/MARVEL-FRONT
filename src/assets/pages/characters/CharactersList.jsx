@@ -1,5 +1,5 @@
 //import style
-import "../comics/comics.css";
+import "./charactersList.css";
 
 // Import library
 import { useState, useEffect } from "react";
@@ -13,14 +13,14 @@ const titleMaxLength = (title, maxLength) => {
   return title;
 };
 // Composant React
-const ComicsList = () => {
-  const [comics, setComics] = useState([]);
+const CharactersList = () => {
+  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://site--marvel-api--7mh6b6ddblpm.code.run/comics")
+      .get("https://site--marvel-api--7mh6b6ddblpm.code.run/characters")
       .then((response) => {
-        setComics(response.data.data.results);
+        setCharacters(response.data.data.results);
       })
       .catch((error) => {
         console.error("Error fetching comics:", error);
@@ -36,19 +36,17 @@ const ComicsList = () => {
   };
 
   return (
-    <article className="comics">
-      <h1>Liste des Comics</h1>
-      <div className="flex-item">
-        {/* Affichez la liste des comics */}
-        {comics.map((comic) => (
-          <section key={comic._id} className="comics-container">
-            <div className="comics-container-list">
+    <article className="characters">
+      <div className="characters-list">
+        {characters.map((character) => (
+          <section key={character._id} className="character-container">
+            <div className="character-card">
               <img
-                className="comics-image"
-                src={getAviableOrNot(comic.thumbnail)}
-                alt={comic.title}
+                className="character-image"
+                src={getAviableOrNot(character.thumbnail)}
+                alt={character.name}
               />
-              <h2 className="mg-10">{titleMaxLength(comic.title, 18)}</h2>
+              <h2 className="mg-10">{titleMaxLength(character.name, 20)}</h2>
             </div>
           </section>
         ))}
@@ -57,4 +55,4 @@ const ComicsList = () => {
   );
 };
 
-export default ComicsList;
+export default CharactersList;

@@ -1,0 +1,31 @@
+header {
+  height: 60px;
+  display: flex;
+  background-color: #e23636;
+  box-shadow: 0px 0px 15px rgb(0, 0, 1, 1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header img {
+  height: 40px;
+  width: 160px;
+  margin-left: 165px;
+  color: #e23636;
+}
+.header-button {
+  margin-right: 20px;
+  height: 100%;
+}
+.header-button button {
+  color: white;
+  height: 100%;
+  width: 120px;
+  margin-right: 20px;
+  background-color: #e23636;
+}

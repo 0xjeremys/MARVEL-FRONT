@@ -5,10 +5,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: "Kdam Thmor Pro", sans-serif;
-  background-color: bisque;
-  display: flex;
+  background-image: url("/src/assets/img/marvel-backround.jpg");
   justify-content: center;
   align-items: center;
 }

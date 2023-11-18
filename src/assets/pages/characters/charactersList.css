@@ -2,24 +2,26 @@
   margin: 10px;
 }
 
-.comics {
+.characters {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1200px;
+  margin-top: 70px;
 }
-
-.flex-item {
+.characters-list {
+  width: 1200px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.comics-container {
+
+.character-container {
   width: 250px;
   margin: 2px;
   margin-bottom: 50px;
 }
-.comics-container-list {
+
+.character-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,10 +30,7 @@
   overflow: hidden;
   height: 100%;
 }
-.comics-image {
+.character-image {
   width: 100%;
   object-fit: cover;
-}
-.comics-title-container {
-  width: 100%;
 }
