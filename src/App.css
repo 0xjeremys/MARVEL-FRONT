@@ -8,7 +8,11 @@
 
 body {
   font-family: "Kdam Thmor Pro", sans-serif;
-  background-image: url("/src/assets/img/marvel-backround.jpg");
   justify-content: center;
   align-items: center;
+}
+
+.link-style {
+  text-decoration: none;
+  color: #ffffff;
 }

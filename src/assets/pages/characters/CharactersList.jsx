@@ -13,19 +13,23 @@ const titleMaxLength = (title, maxLength) => {
   }
   return title;
 };
-// Composant React
+
 const CharactersList = () => {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://site--marvel-api--7mh6b6ddblpm.code.run/characters")
-      .then((response) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://site--marvel-api--7mh6b6ddblpm.code.run/characters"
+        );
         setCharacters(response.data.data.results);
-      })
-      .catch((error) => {
-        console.error("Error fetching comics:", error);
-      });
+      } catch (error) {
+        console.error("Error fetching characters:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   // si l'url de mon image contient image_not_aviable alors je la remplace par c'elle de mon choix
@@ -40,7 +44,11 @@ const CharactersList = () => {
     <article className="characters">
       <div className="characters-list">
         {characters.map((character) => (
-          <Link key={character._id} to={`/character/${character._id}`}>
+          <Link
+            className="link-style"
+            key={character._id}
+            to={`/character/${character._id}`}
+          >
             <section className="character-container">
               <div className="character-card">
                 <img

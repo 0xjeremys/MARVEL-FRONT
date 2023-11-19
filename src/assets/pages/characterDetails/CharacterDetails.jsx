@@ -5,6 +5,13 @@ import axios from "axios";
 
 import "./characterDetails.css";
 
+const titleMaxLength = (title, maxLength) => {
+  if (title.length > maxLength) {
+    return title.slice(0, maxLength) + "...";
+  }
+  return title;
+};
+
 const CharacterDetails = () => {
   const { characterId } = useParams();
   const [characterDetails, setCharacterDetails] = useState(null);
@@ -53,19 +60,25 @@ const CharacterDetails = () => {
               src={getAviableOrNot(characterDetails.data.thumbnail)}
               alt={characterDetails.data.name}
             />
-            <p>{characterDetails.data.description}</p>
+            <p className="character-description">
+              {characterDetails.data.description}
+            </p>{" "}
+            <div className="comics-list-character">
+              <h2> relatifs Comics :</h2>
+              {comics.map((comic, index) => (
+                <div key={index} className="comic-card">
+                  <h3>{titleMaxLength(comic.title, 14)}</h3>
+                  <div className="comic-card-img">
+                    <img
+                      src={getAviableOrNot(comic.thumbnail)}
+                      alt={comic.title}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
-        <div className="comics-list">
-          <h2> relatifs Comics :</h2>
-          {comics.map((comic, index) => (
-            <div key={index} className="comic-card">
-              <h3>{comic.title}</h3>
-              <img src={getAviableOrNot(comic.thumbnail)} alt={comic.title} />
-              {/* <p>{comic.description}</p> */}
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

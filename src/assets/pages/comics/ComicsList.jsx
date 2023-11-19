@@ -4,6 +4,7 @@ import "./comics.css";
 // Import library
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 // Fonction pour limiter le nombre de caractères dans le titre
 const titleMaxLength = (title, maxLength) => {
@@ -17,14 +18,18 @@ const ComicsList = () => {
   const [comics, setComics] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://site--marvel-api--7mh6b6ddblpm.code.run/comics")
-      .then((response) => {
+    const fetchComics = async () => {
+      try {
+        const response = await axios.get(
+          "https://site--marvel-api--7mh6b6ddblpm.code.run/comics"
+        );
         setComics(response.data.data.results);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching comics:", error);
-      });
+      }
+    };
+
+    fetchComics();
   }, []);
 
   // si l'url de mon image contient image_not_aviable alors je la remplace par c'elle de mon choix
@@ -40,16 +45,22 @@ const ComicsList = () => {
       <div className="comics-list">
         {/* // j'affiche la liste des comics */}
         {comics.map((comic) => (
-          <section key={comic._id} className="comics-container">
-            <div className="comics-card">
-              <img
-                className="comics-image"
-                src={getAviableOrNot(comic.thumbnail)}
-                alt={comic.title}
-              />
-              <h2 className="mg-10">{titleMaxLength(comic.title, 18)}</h2>
-            </div>
-          </section>
+          <Link
+            key={comic._id}
+            to={`/comic/${comic._id}`}
+            className="comics-link link-style "
+          >
+            <section key={comic._id} className="comics-container">
+              <div className="comics-card">
+                <img
+                  className="comics-image"
+                  src={getAviableOrNot(comic.thumbnail)}
+                  alt={comic.title}
+                />
+                <h2 className="mg-10">{titleMaxLength(comic.title, 18)}</h2>
+              </div>
+            </section>
+          </Link>
         ))}
       </div>
     </article>

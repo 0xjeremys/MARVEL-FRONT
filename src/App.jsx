@@ -8,6 +8,7 @@ import Header from "./assets/components/header/Header";
 //routes
 import Home from "./assets/pages/Home";
 import ComicsList from "./assets/pages/comics/ComicsList";
+import ComicDetails from "./assets/pages/comicDetails/ComicDetails";
 import CharactersList from "./assets/pages/characters/CharactersList";
 import CharacterDetails from "./assets/pages/characterDetails/CharacterDetails";
 
@@ -24,7 +25,7 @@ function App() {
             path="/character/:characterId"
             element={<CharacterDetails />}
           />
-          <Route />
+          <Route path="/comic/:comicId" element={<ComicDetails />} />
         </Routes>
       </Router>
     </>
