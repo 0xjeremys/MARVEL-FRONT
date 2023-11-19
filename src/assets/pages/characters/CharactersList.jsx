@@ -4,6 +4,7 @@ import "./charactersList.css";
 // Import library
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 // Fonction pour limiter le nombre de caractères dans le titre
 const titleMaxLength = (title, maxLength) => {
@@ -39,16 +40,18 @@ const CharactersList = () => {
     <article className="characters">
       <div className="characters-list">
         {characters.map((character) => (
-          <section key={character._id} className="character-container">
-            <div className="character-card">
-              <img
-                className="character-image"
-                src={getAviableOrNot(character.thumbnail)}
-                alt={character.name}
-              />
-              <h2 className="mg-10">{titleMaxLength(character.name, 20)}</h2>
-            </div>
-          </section>
+          <Link key={character._id} to={`/character/${character._id}`}>
+            <section className="character-container">
+              <div className="character-card">
+                <img
+                  className="character-image"
+                  src={getAviableOrNot(character.thumbnail)}
+                  alt={character.name}
+                />
+                <h2 className="mg-10">{titleMaxLength(character.name, 20)}</h2>
+              </div>
+            </section>
+          </Link>
         ))}
       </div>
     </article>

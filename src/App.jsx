@@ -9,6 +9,7 @@ import Header from "./assets/components/header/Header";
 import Home from "./assets/pages/Home";
 import ComicsList from "./assets/pages/comics/ComicsList";
 import CharactersList from "./assets/pages/characters/CharactersList";
+import CharacterDetails from "./assets/pages/characterDetails/CharacterDetails";
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/comics" element={<ComicsList />} />
           <Route path="/characters" element={<CharactersList />} />
+          <Route
+            path="/character/:characterId"
+            element={<CharacterDetails />}
+          />
           <Route />
         </Routes>
       </Router>

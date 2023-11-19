@@ -1,0 +1,38 @@
+.h1-name {
+  color: black;
+}
+.character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 70px;
+  height: 100vh;
+}
+.characters-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.character-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin-top: 70px;
+  background-color: white;
+}
+.comics-list {
+  background-color: white;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.comic-card {
+  border: 1px solid blue;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
