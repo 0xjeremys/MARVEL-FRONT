@@ -32,6 +32,16 @@ const CharacterDetails = () => {
     fetchCharacterDetails();
   }, [characterId]);
 
+  // je vérifie si l'image est disponible sinon je la remplace
+  const getAviableOrNot = (thumbnail) => {
+    const placeholderImageUrl =
+      "https://imgs.search.brave.com/Lxlx74DUPFTGBRJjpDbyJZd5FjJTFdeWj2hMoea_nV8/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzdlLzkw/Lzg2LzdlOTA4Njhj/NGJjYzQxMWFmZDM0/YWM5NmQ1NWRlMGFl/LmpwZw";
+
+    if (thumbnail.path.includes("image_not_available")) {
+      return placeholderImageUrl;
+    }
+    return `${thumbnail.path}/portrait_incredible.${thumbnail.extension}`;
+  };
   // j'affiche les détails du personnage
   return (
     <section className="character">
@@ -40,7 +50,7 @@ const CharacterDetails = () => {
           <div className="character-details">
             <h1 className="h1-name">{characterDetails.data.name}</h1>
             <img
-              src={`${characterDetails.data.thumbnail.path}/portrait_incredible.${characterDetails.data.thumbnail.extension}`}
+              src={getAviableOrNot(characterDetails.data.thumbnail)}
               alt={characterDetails.data.name}
             />
             <p>{characterDetails.data.description}</p>
@@ -51,10 +61,7 @@ const CharacterDetails = () => {
           {comics.map((comic, index) => (
             <div key={index} className="comic-card">
               <h3>{comic.title}</h3>
-              <img
-                src={`${comic.thumbnail.path}/portrait_incredible.${comic.thumbnail.extension}`}
-                alt={comic.title}
-              />
+              <img src={getAviableOrNot(comic.thumbnail)} alt={comic.title} />
               {/* <p>{comic.description}</p> */}
             </div>
           ))}

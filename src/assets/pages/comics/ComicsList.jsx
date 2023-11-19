@@ -38,7 +38,7 @@ const ComicsList = () => {
   return (
     <article className="comics">
       <div className="comics-list">
-        {/* Affichez la liste des comics */}
+        {/* // j'affiche la liste des comics */}
         {comics.map((comic) => (
           <section key={comic._id} className="comics-container">
             <div className="comics-card">
